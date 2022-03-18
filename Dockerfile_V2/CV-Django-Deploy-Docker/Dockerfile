@@ -21,11 +21,14 @@ RUN apt-get update \
 && apt-get install gcc -y \
 && apt-get clean
 
-RUN pip install pip --upgrade
+# RUN pip install pip --upgrade
 
-RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt
 
-#RUN /opt/venv/bin/pip install -r requirements.txt &&
+RUN /opt/venv/bin/pip install pip --upgrade && \
+    /opt/venv/bin/pip install -r requirements.txt
+
 
 # entrypoint.sh will be discussed later.
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["/opt/venv/bin/python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD /opt/venv/bin/gunicorn Cv_Personal.wsgi:application --bind "0.0.0.0:8111"

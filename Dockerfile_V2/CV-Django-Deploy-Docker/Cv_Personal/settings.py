@@ -186,13 +186,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Para trabajar desde local se deshabilita 
-#STATIC_ROOT = 'static'
+STATIC_ROOT = 'static'
 
 # Para trabajar en produccion de deshabilita 
-STATICFILES_DIRS = [Path.joinpath(BASE_DIR, 'static')]
+#STATICFILES_DIRS = [Path.joinpath(BASE_DIR, 'static')]
 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT  = Path.joinpath(BASE_DIR, 'media')
-# MEDIA_URL = 'https://storage.googleapis.com/cv-django-bucket/media/'
+#MEDIA_URL = 'https://storage.googleapis.com/cv-django-bucket/media/'
 
