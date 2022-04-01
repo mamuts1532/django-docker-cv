@@ -3,6 +3,7 @@ FROM python:3.8.3-slim
 # copy your local files to your
 # docker container
 COPY . /app
+#COPY media/ app/media/
 
 # update your environment to work
 # within the folder you copied your 
@@ -28,7 +29,9 @@ RUN apt-get update \
 RUN /opt/venv/bin/pip install pip --upgrade && \
     /opt/venv/bin/pip install -r requirements.txt
 
+# Collect static files
+RUN /opt/venv/bin/python3 manage.py collectstatic --noinput
 
 # entrypoint.sh will be discussed later.
 #CMD ["/opt/venv/bin/python", "manage.py", "runserver", "0.0.0.0:8000"]
-CMD /opt/venv/bin/gunicorn Cv_Personal.wsgi:application --bind "0.0.0.0:8111"
+CMD /opt/venv/bin/gunicorn Cv_Personal.wsgi:application --bind "0.0.0.0:8000"
