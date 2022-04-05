@@ -1,4 +1,14 @@
-# Django-Docker V1
+# Django-Docker V2
+
+## Description
+
+This version has the following additional features:
+
+. Use a envaironment called venv and is activate with the line ´´´RUN python3 -m venv /opt/venv´´´ of the dockerfile.
+. Collect static file with the line ´´´RUN /opt/venv/bin/python3 manage.py collectstatic --noinput´´´ of the dockerfile.
+. Run app with gunicorn with the line ´´´CMD /opt/venv/bin/gunicorn Cv_Personal.wsgi:application --bind "0.0.0.0:8000"´´´
+
+
 
 ## create image
 docker build --tag django_todov2:latest .
